@@ -1,11 +1,11 @@
 {
     "manifest_version": 3,
     "name": "Pomodoro",
-    "version": 1.0,
+    "version": "1.0",
     "description": "Limit distractions",
     "content_scripts": [
         {
-            "matches": ["https://www.youtube.com/*"],
+            "matches": ["https://*/*"],
             "js": ["./main.js"]
         }
     ]
