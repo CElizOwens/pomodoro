@@ -36,25 +36,34 @@ if (!allowedSites.includes(currentLocation)) {
 }
 
 // declare function to create a timer based on amount of minutes passed in
-class createTimer {
+class createDualTimer {
   //constructor
-  constructor(minutes) {
-    this.msLeft = minutes * 60;
-    this.timer = null;
+  constructor(studyInterval, breakInterval) {
+    this.studyLeft = minutes * 60;
+    this.breakLeft = minutes * 60;
+    this.timer1 = null;
+    this.timer2 = null;
   }
   //methods
-  start() {
-    this.timer = setInterval(() => this.msLeft--, 1000);
+  startTimer1() {
+    this.timer1 = setInterval(() => {
+      if (this.studyLeft <= 0) {
+        // stop timer1
+        clearInterval(this.timer1);
+        // start timer2
+      } // otherwise, continue countdown
+      return this.studyLeft--; // return next decremented time in seconds
+    }, 1000);
   }
-  end() {
-    clearInterval(this.timer);
+  startTimer2() {
+    this.timer2 = setInterval(() => {
+      if (this.breakLeft <= 0) {
+        // stop timer2
+        clearInterval(this.timer2);
+      } // otherwise, continue countdown
+      return this.breakLeft--; // return next decremented time in seconds
+    });
   }
 }
 
-const studyTimer = new createTimer(1);
-// studyTimer.start();
-// setTimeout(() => studyTimer.end(), 4000);
-
-// set study parameters
-// set total timer for total time
-//
+const studySession = new createDualTimer(0.5, 0.25); // 30 secs, 15 secs
