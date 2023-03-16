@@ -14,7 +14,7 @@ let currentLocation = window.location.href;
 console.log(currentLocation)
 // array of "allowed" websites
 // alert the user of focus time remaining
-const allowedSites = ["https://developer.mozilla.org/en-US/"]
+const allowedSites = ["https://developer.mozilla.org/en-US/", "https://www.codesmith.io/", "https://www.w3schools.com/", "https://www.codecademy.com/"]
 if (!allowedSites.includes(currentLocation)) {
     window.location.href = "https://www.codesmith.io/"
 }
